@@ -40,7 +40,7 @@ public class SRPMultiplierConfigHandler {
 		public boolean disableLuresInLC = true;
 
 		@Config.Comment("Enable Parasite Spawners")
-		@Config.Name("spawners enabled")
+		@Config.Name("Parasite MobSpawners enabled")
 		public boolean enableSpawners = true;
 
 		@Config.Comment("Bloody Clock also displays progress to next phase in percent")
