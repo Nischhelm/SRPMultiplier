@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "srpmultiplier.mixin",
+  "refmap": "mixins.srpmultiplier.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "mixins": [
+    "SRPDimensionMultiplierMixin",
+    "SRPClockMixin",
+    "SRPSpawningMixin",
+    "SRPLureDisableMixin"
+  ],
+  "injectors": {
+    "maxShiftBy": 10
+  }
+}
