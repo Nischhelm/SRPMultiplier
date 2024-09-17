@@ -6,7 +6,7 @@
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
-  "updateUrl": "",
+  "updateUrl": "https://www.curseforge.com/members/nischhelm/projects",
   "authorList": ${mod_author},
   "credits": "",
   "logoFile": "",
