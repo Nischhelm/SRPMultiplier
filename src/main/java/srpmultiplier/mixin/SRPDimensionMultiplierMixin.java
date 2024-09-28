@@ -1,6 +1,7 @@
 package srpmultiplier.mixin;
 
 import com.dhanantry.scapeandrunparasites.entity.ai.misc.EntityParasiteBase;
+import com.dhanantry.scapeandrunparasites.world.SRPWorldData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.World;
@@ -35,7 +36,12 @@ public abstract class SRPDimensionMultiplierMixin extends EntityMob {
             else
                 multiplier = SRPMultiplierConfigHandler.server.lcMultiplier;
 
-            multiplier = multiplier - 1;
+            double phaseMultiplier = SRPMultiplierConfigHandler.server.phaseMultiplier;
+            byte evoPhase = SRPWorldData.get(this.getEntityWorld()).getEvolutionPhase();
+
+            multiplier *= (float) (1.+ phaseMultiplier*evoPhase);
+
+            multiplier--;    //op2 uses x(1+multiplier), so need to -1
 
             if (Math.abs(multiplier) > 1e-3) {
                 AttributeModifier modifierHealth = new AttributeModifier(HEALTH_MODIFIER_UUID, "SRPMultiplier Health", multiplier, 2);

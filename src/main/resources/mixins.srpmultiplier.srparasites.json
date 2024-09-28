@@ -6,10 +6,16 @@
   "target": "@env(DEFAULT)",
   "minVersion": "0.8",
   "mixins": [
-    "SRPDimensionMultiplierMixin",
+    "BloodmoonEventHandlerMixin",
+    "BloodmoonHandlerMixin",
+    "ClientBloodmoonHandlerMixin",
+    "EntityInfEndermanMixin",
     "SRPClockMixin",
+    "SRPDimensionMultiplierMixin",
+    "SRPItemsMixin",
+    "SRPLureDisableMixin",
     "SRPSpawningMixin",
-    "SRPLureDisableMixin"
+    "SRPWorldEntitySpawnerMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

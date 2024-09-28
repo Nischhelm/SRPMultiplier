@@ -50,6 +50,27 @@ public class SRPMultiplierConfigHandler {
 		@Config.Comment("Play respective sounds when Beckons or Dispatchers of higher stages naturally spawn")
 		@Config.Name("Play Sounds")
 		public boolean playsounds = true;
+
+		@Config.Name("Strange Bones stack to 16")
+		public boolean strangeBonesStack = true;
+
+		@Config.Name("Do Blood Moons in LC")
+		public boolean bloodmoonInLC = true;
+
+		@Config.Name("Multiply Parasite Mob Cap by this much during Blood Moons (if using SRP custom spawner)")
+		public int bloodmoonInLCmobCapMultiplier = 4;
+
+		@Config.Comment("Multiply stats of parasites per evolution phase by this much, stats x (1 + phaseMultiplier x phase)")
+		@Config.Name("Stat Multiplier per Evolution Phase")
+		public double phaseMultiplier = 0.0;
+
+		@Config.Comment("Allow Assimilated Endermen to tp Primitive and Adapted mobs as well")
+		@Config.Name("Assimilated Endermen tp more Mobs")
+		public boolean simmermenTpMoreMobs = true;
+
+		@Config.Comment("Distance from which Assimilated Endermen search for mobs to tp")
+		@Config.Name("Assimilated Endermen tp radius")
+		public double simmermenTpDistance = 40.0;
 	}
 
 	/*public static class ClientConfig {

@@ -75,6 +75,7 @@ dependencies {
 
     implementation fg.deobf("curse.maven:fermiumbooter-${fermiumbooter_version}")
 
+    implementation fg.deobf("curse.maven:bloodmoon-${bloodmoon_version}")
     implementation files("libs/SRParasites-1.12.2v1.9.11.jar")
 
 }
