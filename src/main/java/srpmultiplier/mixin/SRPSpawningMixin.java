@@ -11,9 +11,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
 
+import mcjty.lostcities.LostCities;
+
 @Mixin(SRPSpawning.DimensionHandler.class)
 public abstract class SRPSpawningMixin {
-
     @Inject(
             method="onSpawn",
             at=@At(value="RETURN"),
@@ -26,5 +27,6 @@ public abstract class SRPSpawningMixin {
                 event.setResult(Event.Result.DEFAULT);
             }
         }
+
     }
 }

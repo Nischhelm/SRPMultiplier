@@ -25,7 +25,7 @@ public abstract class SRPDimensionMultiplierMixin extends EntityMob {
 
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        if(SRPMultiplierConfigHandler.server.doMultipliers) {
+        if(SRPMultiplierConfigHandler.server.doMultipliers && !world.isRemote) {
             float multiplier;
             if (dimension == 0)
                 multiplier = SRPMultiplierConfigHandler.server.overworldMultiplier;

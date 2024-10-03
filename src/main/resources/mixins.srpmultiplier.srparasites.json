@@ -9,13 +9,20 @@
     "BloodmoonEventHandlerMixin",
     "BloodmoonHandlerMixin",
     "ClientBloodmoonHandlerMixin",
+    "EntityInfEndermanHeadMixin",
     "EntityInfEndermanMixin",
+    "EntityPStationaryMixin",
+    "LostCitiesForgeEventHandlersMixin",
+    "ParasiteEventEntityMixin",
     "SRPClockMixin",
     "SRPDimensionMultiplierMixin",
+    "SRPEventHandlerBusMixin",
     "SRPItemsMixin",
     "SRPLureDisableMixin",
     "SRPSpawningMixin",
-    "SRPWorldEntitySpawnerMixin"
+    "SRPWoldDataMixin",
+    "SRPWorldEntitySpawnerMixin",
+    "WorldEntitySpawnerMixin"
   ],
   "injectors": {
     "maxShiftBy": 10

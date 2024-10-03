@@ -2,20 +2,17 @@ package srpmultiplier.mixin;
 
 import com.dhanantry.scapeandrunparasites.entity.ai.misc.*;
 import com.dhanantry.scapeandrunparasites.entity.monster.infected.EntityInfEnderman;
+import com.dhanantry.scapeandrunparasites.entity.monster.pure.*;
 import com.dhanantry.scapeandrunparasites.util.config.SRPConfigMobs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -59,9 +56,12 @@ public abstract class EntityInfEndermanMixin extends EntityPInfected {
 
                 for (EntityParasiteBase mob : moblist)
                     if (mob != this && mob.getAttackTarget() == null) {
-                        boolean correctType = false;
+                        boolean correctType;
                         if(SRPMultiplierConfigHandler.server.simmermenTpMoreMobs)
-                            correctType = mob instanceof EntityPAdapted || mob instanceof EntityPInfected || mob instanceof EntityPPrimitive;
+                            correctType = mob instanceof EntityPInfected ||
+                                    mob instanceof EntityPAdapted ||
+                                    mob instanceof EntityPPrimitive ||
+                                    mob instanceof EntityPPure;
                         else
                             correctType = mob instanceof EntityPInfected;
                         if (correctType)

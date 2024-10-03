@@ -30,7 +30,8 @@ public abstract class SRPClockMixin {
             remap = false
     )
     public void saveWorldDataMixin(World worldIn, EntityPlayer playerIn, EnumHand handIn, CallbackInfoReturnable<ActionResult<ItemStack>> cir){
-        this.worldData = SRPWorldData.get(worldIn);
+        if(!worldIn.isRemote)
+            this.worldData = SRPWorldData.get(worldIn);
     }
 
     @Redirect(

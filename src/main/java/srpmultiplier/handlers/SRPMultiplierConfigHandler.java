@@ -20,19 +20,19 @@ public class SRPMultiplierConfigHandler {
 
 	public static class ServerConfig {
 
-		@Config.Name("Modify Global Attribute multipliers")
+		@Config.Name("Parasite Stat Multiplier: Global switch")
 		public boolean doMultipliers = true;
 
-		@Config.Name("Overworld Parasite Multiplier")
+		@Config.Name("Parasite Stat Multiplier Overworld ")
 		public float overworldMultiplier = 1.f;
 
-		@Config.Name("Nether Parasite Multiplier")
+		@Config.Name("Parasite Stat Multiplier Nether")
 		public float netherMultiplier = 2.f;
 
-		@Config.Name("End Parasite Multiplier")
+		@Config.Name("Parasite Stat Multiplier End")
 		public float endMultiplier = 2.f;
 
-		@Config.Name("Lost Cities Parasite Multiplier")
+		@Config.Name("Parasite Stat Multiplier Lost Cities")
 		public float lcMultiplier = 4.f;
 
 		@Config.Comment("Disable Lures in LC and instead spawn a Dispatcher Nidus")
@@ -57,7 +57,8 @@ public class SRPMultiplierConfigHandler {
 		@Config.Name("Do Blood Moons in LC")
 		public boolean bloodmoonInLC = true;
 
-		@Config.Name("Multiply Parasite Mob Cap by this much during Blood Moons (if using SRP custom spawner)")
+		@Config.Comment("Multiply Parasite Mob Cap by this much during Blood Moons (if using SRP custom spawner)")
+		@Config.Name("Bloodmoon Parasite Cap Multiplier")
 		public int bloodmoonInLCmobCapMultiplier = 4;
 
 		@Config.Comment("Multiply stats of parasites per evolution phase by this much, stats x (1 + phaseMultiplier x phase)")
@@ -71,6 +72,58 @@ public class SRPMultiplierConfigHandler {
 		@Config.Comment("Distance from which Assimilated Endermen search for mobs to tp")
 		@Config.Name("Assimilated Endermen tp radius")
 		public double simmermenTpDistance = 40.0;
+
+		@Config.Comment("LC Portals are locked until reaching this phase. Disable with -1")
+		@Config.Name("LC Portal Phase Lock")
+		public int portalLClockedPhase = 6;
+
+		@Config.Comment("Custom Mob Cap for Nexus Parasites (Dispatcher+Beckon) using SRP Phase Custom Spawner. Nexus Parasites still count to the global SRP Mob Cap. Disable with -1")
+		@Config.Name("Nexus Mob Cap")
+		public int nexusCap = 15;
+
+		@Config.Comment("Stop mobs from spawning in lazy chunks by failing the spawn attempt. Slows spawning in low RD (<9)")
+		@Config.Name("No spawns in lazy chunks - slow")
+		public boolean noLazySpawnsSlow = true;
+
+		@Config.Comment("Stop mobs from spawning in lazy chunks by not considering lazy loaded chunks. Results in seemingly fast spawns at low RD (<9). Ignores the slow version if this is set to true")
+		@Config.Name("No spawns in lazy chunks - fast")
+		public boolean noLazySpawnsFast = false;
+
+		@Config.Comment("Make living+sentient armor also limit Fear and Viral lvls that are applied during an attack")
+		@Config.Name("Fix Sentient Armor Cure")
+		public boolean fixSentientArmorCuring = true;
+
+		@Config.Comment("Whitelist Deterrent and Nexus mobs to take dmg per second if world is in low evolution phase")
+		@Config.Name("Deterrents take damage from low phase whitelist ")
+		public String[] whiteListedDeterrents = {"srparasites:kyphosis","srparasites:sentry","srparasites:seizer","srparasites:dispatcherten","srparasites:beckon_si","srparasites:beckon_sii","srparasites:beckon_siii","srparasites:beckon_siv","srparasites:dispatcher_si","srparasites:dispatcher_sii","srparasites:dispatcher_siii","srparasites:dispatcher_siv"};
+
+		@Config.Comment("Set to true to use Deterrent taking dmg whitelist as blacklist")
+		@Config.Name("Deterrent whitelist is blacklist")
+		public boolean blackListDeterrents = false;
+
+		@Config.Comment("Only give one evolution phase point penalty when players sleep instead of a penalty per sleeping player")
+		@Config.Name("Flat sleep point penalty")
+		public boolean flatSleepPenalty = true;
+
+		@Config.Comment("Make Assimilated Endermen be able to despawn if they got converted in the end")
+		@Config.Name("End Simmermen despawn")
+		public boolean despawnEndSimmermen = true;
+
+		@Config.Comment("Max amount of Assimilated Endermen that can spawn via assimilation in the end (Disable with -1)")
+		@Config.Name("End Simmermen Conversion Cap")
+		public int endSimmermenCap = 40;
+
+		@Config.Comment("Increase Dmg that End Endermen deal to Parasites by this multiplier (Disable with -1)")
+		@Config.Name("End Enderman Dmg Multiplier on Parasites")
+		public double endermanDmgVsParasites = -1.0;
+
+		@Config.Comment("Chance to give End Endermen Rage effect on spawn. These will auto target Parasites")
+		@Config.Name("End Endermen Rage Chance")
+		public float endermanRageChance = 0.0f;
+
+		@Config.Comment("Rage Effect Level for Endermen in the End")
+		@Config.Name("End Endermen Rage Level")
+		public int endermanRageLevel = 0;
 	}
 
 	/*public static class ClientConfig {

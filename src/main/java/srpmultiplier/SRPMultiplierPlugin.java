@@ -13,6 +13,7 @@ public class SRPMultiplierPlugin implements IFMLLoadingPlugin {
 		MixinBootstrap.init();
 		//False for Vanilla/Coremod mixins, true for regular mod mixins
 		FermiumRegistryAPI.enqueueMixin(true, "mixins.srpmultiplier.srparasites.json", true);
+		FermiumRegistryAPI.enqueueMixin(false, "mixins.srpmultiplier.vanilla.json", true);
 	}
 
 	@Override
