@@ -1,6 +1,5 @@
 package srpmultiplier.mixin;
 
-import com.dhanantry.scapeandrunparasites.init.SRPPotions;
 import com.dhanantry.scapeandrunparasites.world.SRPWorldData;
 import mcjty.lostcities.ForgeEventHandlers;
 import mcjty.lostcities.config.LostCityConfiguration;

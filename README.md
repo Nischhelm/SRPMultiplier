@@ -12,15 +12,16 @@ Changes:
 - Plays respective sounds when dispatchers or beckons of higher stages naturally spawn
 - Bloodmoon in LC (increased Parasite Mob Cap + increased Parasite spawning speed)
 - Strange Bones stack to 16
-- Buff Assimilated Endermen to tp Primitive, Adapted and Pure mobs as well
+- Buff Assimilated Endermen to tp Primitive, Adapted and Pure mobs as well (depending on phase)
 - Nerf End Assimilated Endermen to stop the utter chaos
   - Added custom mob cap for Endermen turning to Assimilated Endermen in the end
   - Made Assimilated Endermen always be able to despawn in End, even when coming from COTH
-  - Made Endermen stronger against Parasites (optional)
 - Cap Nexus Type spawns to 15 (custom mob cap)
 - Added whitelist for Nexus/Deterrent types to not take dmg over time in too low phases
 - Fix Sentient Armor Viral Limiting
 - Fixed Multiplayer Sleeping Penalty being counted per sleeping player
+- Fix Lycanite Spawner jsons not picking up srp mobs without reload
+- Made Lures have phase dependent multipliers for their point reduction value
 
 Idea is that LC is overrun by parasites via the End. Now they spill over to the other dimensions. If you try to enter LC, theres gonna be parasitic biomes almost immediately and you bring home even worse nightmares.
 	

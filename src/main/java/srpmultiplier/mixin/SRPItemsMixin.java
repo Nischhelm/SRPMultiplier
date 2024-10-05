@@ -1,12 +1,7 @@
 package srpmultiplier.mixin;
 
-import com.dhanantry.scapeandrunparasites.entity.ai.misc.EntityParasiteBase;
 import com.dhanantry.scapeandrunparasites.init.SRPItems;
-import com.dhanantry.scapeandrunparasites.init.SRPSpawning;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
-import net.minecraftforge.fml.common.eventhandler.Event;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.*;

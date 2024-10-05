@@ -1,6 +1,5 @@
 package srpmultiplier.mixin;
 
-import com.dhanantry.scapeandrunparasites.item.ItemBase;
 import com.dhanantry.scapeandrunparasites.item.ItemEPClock;
 import com.dhanantry.scapeandrunparasites.network.SRPCommandEvolution;
 import com.dhanantry.scapeandrunparasites.world.SRPWorldData;

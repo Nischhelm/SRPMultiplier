@@ -13,7 +13,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import srpmultiplier.SRPMultiplier;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
 
 @Mixin(BloodmoonHandler.class)

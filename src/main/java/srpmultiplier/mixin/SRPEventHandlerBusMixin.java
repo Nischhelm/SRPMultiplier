@@ -3,15 +3,16 @@ package srpmultiplier.mixin;
 import com.dhanantry.scapeandrunparasites.util.handlers.SRPEventHandlerBus;
 import com.dhanantry.scapeandrunparasites.world.SRPWorldData;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import srpmultiplier.SRPMultiplier;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
 
 import java.util.HashMap;
-import java.util.Map;
 
 @Mixin(SRPEventHandlerBus.class)
 public abstract class SRPEventHandlerBusMixin {
@@ -39,5 +40,15 @@ public abstract class SRPEventHandlerBusMixin {
             }
         }
         return data.setTotalKills(in, true, world, true);
+    }
+
+    @Inject(
+            method="entityPlayer",
+            at = @At("HEAD"),
+            remap = false,
+            cancellable = true
+    )
+    void fixPhaseResetMixin(PlayerInteractEvent.EntityInteractSpecific event, CallbackInfo ci){
+        ci.cancel();
     }
 }

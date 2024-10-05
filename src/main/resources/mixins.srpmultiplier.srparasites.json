@@ -9,6 +9,7 @@
     "BloodmoonEventHandlerMixin",
     "BloodmoonHandlerMixin",
     "ClientBloodmoonHandlerMixin",
+    "EntityAIVenkrolSummonMixin",
     "EntityInfEndermanHeadMixin",
     "EntityInfEndermanMixin",
     "EntityPStationaryMixin",

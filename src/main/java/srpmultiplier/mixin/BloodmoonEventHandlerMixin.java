@@ -1,7 +1,6 @@
 package srpmultiplier.mixin;
 
 import lumien.bloodmoon.handler.BloodmoonEventHandler;
-import lumien.bloodmoon.server.BloodmoonHandler;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.world.WorldProvider;
 import org.spongepowered.asm.mixin.Mixin;

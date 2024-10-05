@@ -7,7 +7,6 @@ import net.minecraft.util.ResourceLocation;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import srpmultiplier.SRPMultiplier;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
 
 

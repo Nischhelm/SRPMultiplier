@@ -2,8 +2,8 @@ package srpmultiplier.mixin;
 
 import com.dhanantry.scapeandrunparasites.entity.ai.misc.*;
 import com.dhanantry.scapeandrunparasites.entity.monster.infected.EntityInfEnderman;
-import com.dhanantry.scapeandrunparasites.entity.monster.pure.*;
 import com.dhanantry.scapeandrunparasites.util.config.SRPConfigMobs;
+import com.dhanantry.scapeandrunparasites.world.SRPWorldData;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -56,14 +56,17 @@ public abstract class EntityInfEndermanMixin extends EntityPInfected {
 
                 for (EntityParasiteBase mob : moblist)
                     if (mob != this && mob.getAttackTarget() == null) {
-                        boolean correctType;
+                        byte evophase = SRPWorldData.get(world).getEvolutionPhase();
+                        byte phasePrimTP = SRPMultiplierConfigHandler.server.simmermenTpPrimPhase;
+                        byte phaseAdaTP = SRPMultiplierConfigHandler.server.simmermenTpAdaPhase;
+                        byte phasePureTP = SRPMultiplierConfigHandler.server.simmermenTpPurePhase;
+
+                        boolean correctType = mob instanceof EntityPInfected;
                         if(SRPMultiplierConfigHandler.server.simmermenTpMoreMobs)
-                            correctType = mob instanceof EntityPInfected ||
-                                    mob instanceof EntityPAdapted ||
-                                    mob instanceof EntityPPrimitive ||
-                                    mob instanceof EntityPPure;
-                        else
-                            correctType = mob instanceof EntityPInfected;
+                            correctType = correctType ||
+                                    (mob instanceof EntityPPrimitive && evophase >= phasePrimTP) ||
+                                    (mob instanceof EntityPAdapted && evophase >= phaseAdaTP) ||
+                                    (mob instanceof EntityPPure && evophase >= phasePureTP);
                         if (correctType)
                             if (!(mob instanceof EntityCanMelt && ((EntityCanMelt) mob).isMelting()))
                                 if (mob.getHealth() - SRPConfigMobs.infendermanTeleDamage >= 2.0F && this.teleportToEntity(mob, 1.0)) {

@@ -69,6 +69,17 @@ public class SRPMultiplierConfigHandler {
 		@Config.Name("Assimilated Endermen tp more Mobs")
 		public boolean simmermenTpMoreMobs = true;
 
+		@Config.Comment("Phase from which Assimilated Endermen teleport primitive Parasites")
+		@Config.Name("Assimilated Endermen tp primitive Parasites phase")
+		public byte simmermenTpPrimPhase = 4;
+
+		@Config.Comment("Phase from which Assimilated Endermen teleport primitive Parasites")
+		@Config.Name("Assimilated Endermen tp adapted Parasites phase")
+		public byte simmermenTpAdaPhase = 5;
+
+		@Config.Comment("Phase from which Assimilated Endermen teleport primitive Parasites")
+		@Config.Name("Assimilated Endermen tp pure Parasites phase")
+		public byte simmermenTpPurePhase = 6;
 		@Config.Comment("Distance from which Assimilated Endermen search for mobs to tp")
 		@Config.Name("Assimilated Endermen tp radius")
 		public double simmermenTpDistance = 40.0;
@@ -113,17 +124,14 @@ public class SRPMultiplierConfigHandler {
 		@Config.Name("End Simmermen Conversion Cap")
 		public int endSimmermenCap = 40;
 
-		@Config.Comment("Increase Dmg that End Endermen deal to Parasites by this multiplier (Disable with -1)")
-		@Config.Name("End Enderman Dmg Multiplier on Parasites")
-		public double endermanDmgVsParasites = -1.0;
+		@Config.Comment("Change Lure Point Reduction based on Phase")
+		@Config.Name("Phase dependent Lure Values")
+		public boolean variableLureValues = true;
 
-		@Config.Comment("Chance to give End Endermen Rage effect on spawn. These will auto target Parasites")
-		@Config.Name("End Endermen Rage Chance")
-		public float endermanRageChance = 0.0f;
+		@Config.Comment("Phase multiplier on lure values (0 to 8)")
+		@Config.Name("Lure Phase Multipliers")
+		public int[] lurePhaseMultis = {10,10,15,300,3000,50000,50000,100000,100000};
 
-		@Config.Comment("Rage Effect Level for Endermen in the End")
-		@Config.Name("End Endermen Rage Level")
-		public int endermanRageLevel = 0;
 	}
 
 	/*public static class ClientConfig {

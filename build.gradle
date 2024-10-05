@@ -75,6 +75,7 @@ dependencies {
 
     implementation fg.deobf("curse.maven:fermiumbooter-${fermiumbooter_version}")
 
+    implementation fg.deobf("curse.maven:lycanitesmobs-${lycanites_version}")
     implementation fg.deobf("curse.maven:lostcity-${lostcity_version}")
     implementation fg.deobf("curse.maven:bloodmoon-${bloodmoon_version}")
     implementation fg.deobf("curse.maven:bloodmoon-${rlmixins_version}")
