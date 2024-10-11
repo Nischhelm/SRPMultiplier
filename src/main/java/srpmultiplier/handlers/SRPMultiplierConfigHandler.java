@@ -132,7 +132,10 @@ public class SRPMultiplierConfigHandler {
 		@Config.Name("Lure Phase Multipliers")
 		public int[] lurePhaseMultis = {10,10,15,300,3000,50000,50000,100000,100000};
 
-	}
+		@Config.Comment("Do Phase+Point functionalities per player, allowing better Multiplayer")
+		@Config.Name("Use Player Phases")
+		public boolean playerPhases = true;
+    }
 
 	/*public static class ClientConfig {
 

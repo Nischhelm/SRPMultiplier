@@ -25,7 +25,7 @@ public abstract class SRPEventHandlerBusMixin {
             remap = false
     )
     boolean flatSleepPenaltyMixin(SRPWorldData data, int in, boolean plus, World world, boolean canChangePhase){
-        if(SRPMultiplierConfigHandler.server.flatSleepPenalty) {
+        if(SRPMultiplierConfigHandler.server.flatSleepPenalty && !SRPMultiplierConfigHandler.server.playerPhases) {
             int dimension = world.provider.getDimension();
             long currentWT = world.getWorldTime();
             if (!lastWake.containsKey(dimension)) {

@@ -22,6 +22,7 @@ Changes:
 - Fixed Multiplayer Sleeping Penalty being counted per sleeping player
 - Fix Lycanite Spawner jsons not picking up srp mobs without reload
 - Made Lures have phase dependent multipliers for their point reduction value
+- Each player can have their own phases, making late joins in multiplayer less bad
 
 Idea is that LC is overrun by parasites via the End. Now they spill over to the other dimensions. If you try to enter LC, theres gonna be parasitic biomes almost immediately and you bring home even worse nightmares.
 	

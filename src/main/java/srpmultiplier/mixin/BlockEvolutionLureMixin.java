@@ -27,13 +27,13 @@ import srpmultiplier.handlers.SRPMultiplierConfigHandler;
 import static com.dhanantry.scapeandrunparasites.block.BlockEvolutionLure.VARIANT;
 
 @Mixin(BlockEvolutionLure.class)
-public abstract class SRPLureDisableMixin extends BlockBase {
+public abstract class BlockEvolutionLureMixin extends BlockBase {
 
-    public SRPLureDisableMixin(Material material, String name, float hardness, boolean creative, boolean tickRandom) {
+    public BlockEvolutionLureMixin(Material material, String name, float hardness, boolean creative, boolean tickRandom) {
         super(material, name, hardness, creative, tickRandom);
     }
 
-    public SRPLureDisableMixin(Material material, String name, float hardness, boolean creative, boolean tickRandom, float resistance) {
+    public BlockEvolutionLureMixin(Material material, String name, float hardness, boolean creative, boolean tickRandom, float resistance) {
         super(material, name, hardness, creative, tickRandom, resistance);
     }
 
@@ -97,5 +97,4 @@ public abstract class SRPLureDisableMixin extends BlockBase {
         }
         return data.setTotalKills(in, plus, worldIn, canChangePhase);
     }
-
 }
