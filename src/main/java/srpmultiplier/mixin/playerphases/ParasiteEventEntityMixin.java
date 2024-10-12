@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
-import srpmultiplier.handlers.SRPWorldDataInterface;
+import srpmultiplier.util.SRPWorldDataInterface;
 
 @Mixin(ParasiteEventEntity.class)
 public abstract class ParasiteEventEntityMixin {
@@ -24,7 +24,7 @@ public abstract class ParasiteEventEntityMixin {
 
     @Inject(
             method = "merge",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;get(Lnet/minecraft/world/World;)Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;"),
             remap = false
     )
     private static void saveBlockPosMixin(EntityParasiteBase entityin, int code, String name, CallbackInfoReturnable<Boolean> cir){

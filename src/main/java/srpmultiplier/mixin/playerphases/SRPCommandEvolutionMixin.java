@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
-import srpmultiplier.handlers.SRPWorldDataInterface;
+import srpmultiplier.util.SRPWorldDataInterface;
 
 @Mixin(SRPCommandEvolution.class)
 public abstract class SRPCommandEvolutionMixin {
@@ -25,7 +25,7 @@ public abstract class SRPCommandEvolutionMixin {
 
     @Inject(
             method = "func_184881_a",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;getEvolutionPhase()B"),
             remap = false
     )
     void saveBlockPosMixin(MinecraftServer server, ICommandSender sender, String[] argString, CallbackInfo ci){

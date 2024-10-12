@@ -4,7 +4,6 @@ Changes some stuff in SRParasites to work better with RLCraft
 
 Changes:
 - Global Multipliers for Health, Armor, Damage and KB Resistance are set per dimension (default is 1x for overworld, 2x for nether+end, 4x for LC)
-- Additional Multiplier increasing with Phase (default disabled)
 - LC starts in Phase 8, Stage 4 Beckons and Stage 3 Dispatchers spawn naturally, Lures are disabled and turn to Dispatcher Nidus when trying to use them
 - LC Portal only enabled from Phase 6, unlock Preeminents and Beckon+Dispatcher spawns everywhere from Phase 6 after entering
 - Bloody Clock also shows the progress to next phase in %
@@ -23,8 +22,9 @@ Changes:
 - Fix Lycanite Spawner jsons not picking up srp mobs without reload
 - Made Lures have phase dependent multipliers for their point reduction value
 - Each player can have their own phases, making late joins in multiplayer less bad
+- Added phase limit from which on Adapted mobs despawning gives a penalty
 
 Idea is that LC is overrun by parasites via the End. Now they spill over to the other dimensions. If you try to enter LC, theres gonna be parasitic biomes almost immediately and you bring home even worse nightmares.
 	
-Built upon FermiumTemplateMod by FonnyMunkey, needs FermiumBooter
+Built upon FermiumTemplateMod by fonnymunkey, needs FermiumBooter
 https://github.com/fonnymunkey/FermiumTemplateMod/

@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import java.util.List;
 import java.util.UUID;
 
-public class ParasiteEventEntityAddition {
+public class PlayerPhases_AlertOnePlayer {
 
     public static void alertOnePlayer(World worldIn, UUID playerUUID, String message, int warning) {
         List<EntityPlayer> playerEntityList = worldIn.playerEntities;

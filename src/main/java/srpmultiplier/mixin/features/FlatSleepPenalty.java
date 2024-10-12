@@ -1,21 +1,18 @@
-package srpmultiplier.mixin;
+package srpmultiplier.mixin.features;
 
 import com.dhanantry.scapeandrunparasites.util.handlers.SRPEventHandlerBus;
 import com.dhanantry.scapeandrunparasites.world.SRPWorldData;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
 
 import java.util.HashMap;
 
 @Mixin(SRPEventHandlerBus.class)
-public abstract class SRPEventHandlerBusMixin {
+public abstract class FlatSleepPenalty {
     @Unique
     HashMap<Integer,Long> lastWake = new HashMap<>();
 
@@ -40,15 +37,5 @@ public abstract class SRPEventHandlerBusMixin {
             }
         }
         return data.setTotalKills(in, true, world, true);
-    }
-
-    @Inject(
-            method="entityPlayer",
-            at = @At("HEAD"),
-            remap = false,
-            cancellable = true
-    )
-    void fixPhaseResetMixin(PlayerInteractEvent.EntityInteractSpecific event, CallbackInfo ci){
-        ci.cancel();
     }
 }

@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
-import srpmultiplier.handlers.SRPWorldDataInterface;
+import srpmultiplier.util.SRPWorldDataInterface;
 
 import java.util.Random;
 
@@ -24,7 +24,7 @@ public abstract class BlockInfestedRemainMixin {
 
     @Inject(
             method = "func_180650_b",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;get(Lnet/minecraft/world/World;)Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;"),
             remap = false
     )
     void mixin(World worldIn, BlockPos pos, IBlockState state, Random rand, CallbackInfo ci){

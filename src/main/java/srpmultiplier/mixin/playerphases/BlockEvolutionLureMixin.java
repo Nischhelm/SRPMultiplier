@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
-import srpmultiplier.handlers.SRPWorldDataInterface;
+import srpmultiplier.util.SRPWorldDataInterface;
 
 @Mixin(BlockEvolutionLure.class)
 public abstract class BlockEvolutionLureMixin {
@@ -25,12 +25,11 @@ public abstract class BlockEvolutionLureMixin {
 
     @Inject(
             method = "func_180639_a",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;get(Lnet/minecraft/world/World;)Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;"),
             remap = false
     )
     void mixin(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ, CallbackInfoReturnable<Boolean> cir){
-        if(!worldIn.isRemote)
-            this.player = playerIn;
+        this.player = playerIn;
     }
 
     @Redirect(

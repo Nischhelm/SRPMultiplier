@@ -1,4 +1,4 @@
-package srpmultiplier.mixin;
+package srpmultiplier.mixin.features;
 
 import com.dhanantry.scapeandrunparasites.entity.ai.misc.EntityPStationary;
 import net.minecraft.entity.EntityList;
@@ -9,9 +9,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
 
+import java.util.Arrays;
+
 
 @Mixin(EntityPStationary.class)
-public abstract class EntityPStationaryMixin {
+public abstract class DeterrentLowPhaseDamage {
     @Redirect(
             method = "func_70636_d",
             at = @At(value="INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/entity/ai/misc/EntityPStationary;func_70097_a(Lnet/minecraft/util/DamageSource;F)Z"),
@@ -21,16 +23,9 @@ public abstract class EntityPStationaryMixin {
         ResourceLocation resourcelocation = EntityList.getKey(instance);
         String typeOfThis = resourcelocation == null ? "" : resourcelocation.toString();
 
-        boolean listContainsThis = false;
-        for (String entityName : SRPMultiplierConfigHandler.server.whiteListedDeterrents)
-            if (typeOfThis.equals(entityName)) {
-                listContainsThis = true;
-                break;
-            }
-
+        boolean listContainsThis = Arrays.asList(SRPMultiplierConfigHandler.server.whiteListedDeterrents).contains(typeOfThis);
         if(listContainsThis == SRPMultiplierConfigHandler.server.blackListDeterrents)
             return false;
-        else
-            return instance.attackEntityFrom(DamageSource.OUT_OF_WORLD, 1.0F);
+        return instance.attackEntityFrom(DamageSource.OUT_OF_WORLD, 1.0F);
     }
 }

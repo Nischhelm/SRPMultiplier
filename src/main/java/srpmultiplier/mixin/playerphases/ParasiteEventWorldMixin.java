@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
-import srpmultiplier.handlers.SRPWorldDataInterface;
+import srpmultiplier.util.SRPWorldDataInterface;
 
 import java.util.Random;
 
@@ -25,7 +25,7 @@ public abstract class ParasiteEventWorldMixin {
 
     @Inject(
             method = "placeHeartInWorld",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;getEvolutionPhase()B"),
             remap = false
     )
     private static void saveBlockPosMixin(World worldIn, BlockPos pos, CallbackInfoReturnable<Integer> cir){
@@ -46,7 +46,7 @@ public abstract class ParasiteEventWorldMixin {
 
     @Inject(
             method = "canInfestBlock",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;get(Lnet/minecraft/world/World;)Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;"),
             remap = false
     )
     private static void saveBlockPosMixin2(World worldIn, BlockPos pos, Random rand, int stage, boolean fromVenkrol, CallbackInfo ci){
@@ -67,7 +67,7 @@ public abstract class ParasiteEventWorldMixin {
 
     @Inject(
             method = "spreadBiomeBlockStain",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;get(Lnet/minecraft/world/World;)Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;"),
             remap = false
     )
     private static void saveBlockPosMixin3(World worldIn, BlockPos pos, Random rand, CallbackInfo ci){
@@ -88,7 +88,7 @@ public abstract class ParasiteEventWorldMixin {
 
     @Inject(
             method = "spreadBiomeBlockTrunk",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;get(Lnet/minecraft/world/World;)Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;"),
             remap = false
     )
     private static void saveBlockPosMixin4(World worldIn, BlockPos pos, Random rand, CallbackInfo ci){
@@ -109,7 +109,7 @@ public abstract class ParasiteEventWorldMixin {
 
     @Inject(
             method = "placeColonyInWorld",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;getEvolutionPhase()B"),
             remap = false
     )
     private static void saveBlockPosMixin5(World worldIn, BlockPos pos, CallbackInfoReturnable<Integer> cir){

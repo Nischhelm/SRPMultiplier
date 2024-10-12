@@ -1,4 +1,4 @@
-package srpmultiplier.mixin;
+package srpmultiplier.mixin.LCTweaks.bloodmoon;
 
 import lumien.bloodmoon.client.ClientBloodmoonHandler;
 import net.minecraft.world.WorldProvider;

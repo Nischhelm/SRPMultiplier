@@ -1,4 +1,4 @@
-package srpmultiplier.mixin;
+package srpmultiplier.mixin.simenderman;
 
 import com.dhanantry.scapeandrunparasites.entity.ai.misc.*;
 import com.dhanantry.scapeandrunparasites.entity.monster.infected.EntityInfEnderman;
@@ -12,14 +12,15 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
+import srpmultiplier.util.SRPWorldDataInterface;
 
 import java.util.Collections;
 import java.util.List;
 
 @Mixin(EntityInfEnderman.class)
-public abstract class EntityInfEndermanMixin extends EntityPInfected {
+public abstract class SimEndermanTp extends EntityPInfected {
 
-    public EntityInfEndermanMixin(World worldIn) {
+    public SimEndermanTp(World worldIn) {
         super(worldIn);
     }
 
@@ -56,7 +57,14 @@ public abstract class EntityInfEndermanMixin extends EntityPInfected {
 
                 for (EntityParasiteBase mob : moblist)
                     if (mob != this && mob.getAttackTarget() == null) {
-                        byte evophase = SRPWorldData.get(world).getEvolutionPhase();
+
+                        byte evophase;
+                        SRPWorldData data = SRPWorldData.get(world);
+                        if (SRPMultiplierConfigHandler.server.playerPhases)
+                            evophase = ((SRPWorldDataInterface) data).getByBlock(world, getPosition()).getEvolutionPhase();
+                        else
+                            evophase = data.getEvolutionPhase();
+
                         byte phasePrimTP = SRPMultiplierConfigHandler.server.simmermenTpPrimPhase;
                         byte phaseAdaTP = SRPMultiplierConfigHandler.server.simmermenTpAdaPhase;
                         byte phasePureTP = SRPMultiplierConfigHandler.server.simmermenTpPurePhase;

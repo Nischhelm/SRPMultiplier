@@ -1,4 +1,4 @@
-package srpmultiplier.mixin;
+package srpmultiplier.mixin.spawntweaks;
 
 import com.dhanantry.scapeandrunparasites.entity.ai.misc.EntityParasiteBase;
 import com.dhanantry.scapeandrunparasites.init.SRPSpawning;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
 
 @Mixin(SRPSpawning.DimensionHandler.class)
-public abstract class SRPSpawningMixin {
+public abstract class SRPSpawnerFix {
     @Inject(
             method="onSpawn",
             at=@At(value="RETURN"),

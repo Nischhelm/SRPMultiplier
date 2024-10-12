@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
-import srpmultiplier.handlers.SRPWorldDataInterface;
+import srpmultiplier.util.SRPWorldDataInterface;
 
 @Mixin(SRPSpawning.DimensionHandler.class)
 public abstract class SRPSpawningDimensionMixin {
@@ -24,7 +24,7 @@ public abstract class SRPSpawningDimensionMixin {
 
     @Inject(
             method = "onSpawn",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;getEvolutionPhase()B"),
             remap = false
     )
     private static void saveBlockPosMixin(LivingSpawnEvent.CheckSpawn event, CallbackInfo ci){

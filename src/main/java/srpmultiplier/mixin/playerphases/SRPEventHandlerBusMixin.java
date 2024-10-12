@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
-import srpmultiplier.handlers.SRPWorldDataInterface;
+import srpmultiplier.util.SRPWorldDataInterface;
 
 @Mixin(SRPEventHandlerBus.class)
 public abstract class SRPEventHandlerBusMixin {
@@ -32,7 +32,7 @@ public abstract class SRPEventHandlerBusMixin {
 
     @Inject(
             method = "cropGrow",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;getEvolutionPhase()B"),
             remap = false
     )
     void saveBlockPosMixin(BlockEvent.CropGrowEvent.Pre event, CallbackInfo ci){
@@ -53,7 +53,7 @@ public abstract class SRPEventHandlerBusMixin {
 
     @Inject(
             method = "playerFishing",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;get(Lnet/minecraft/world/World;)Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;"),
             remap = false
     )
     void savePlayerMixin2(ItemFishedEvent event, CallbackInfo ci){
@@ -74,7 +74,7 @@ public abstract class SRPEventHandlerBusMixin {
 
     @Inject(
             method = "setNewParasiteTask",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;getEvolutionPhase()B"),
             remap = false
     )
     void saveBlockPosMixin3(EntityParasiteBase entity, String mobname, boolean flagNC, SRPWorldData data, CallbackInfo ci){
@@ -103,7 +103,7 @@ public abstract class SRPEventHandlerBusMixin {
 
     @Inject(
             method = "setLoot",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;get(Lnet/minecraft/world/World;)Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;"),
             remap = false
     )
     void saveBlockPosMixin4(LivingDropsEvent event, CallbackInfo ci){
@@ -125,7 +125,7 @@ public abstract class SRPEventHandlerBusMixin {
 
     @Inject(
             method = "playerUp",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;get(Lnet/minecraft/world/World;)Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;"),
             remap = false
     )
     void savePlayerMixin5(PlayerWakeUpEvent event, CallbackInfo ci){

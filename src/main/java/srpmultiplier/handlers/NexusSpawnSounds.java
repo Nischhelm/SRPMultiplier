@@ -8,7 +8,7 @@ import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class SRPSpawningHandler {
+public class NexusSpawnSounds {
 
     @SubscribeEvent(priority=EventPriority.LOWEST)
     public static void soundsOnSpecialSpawns(LivingSpawnEvent.SpecialSpawn event){

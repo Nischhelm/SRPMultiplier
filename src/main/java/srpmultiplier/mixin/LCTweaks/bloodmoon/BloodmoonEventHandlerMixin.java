@@ -1,4 +1,4 @@
-package srpmultiplier.mixin;
+package srpmultiplier.mixin.LCTweaks.bloodmoon;
 
 import lumien.bloodmoon.handler.BloodmoonEventHandler;
 import net.minecraft.entity.EntityLivingBase;

@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
-import srpmultiplier.handlers.SRPWorldDataInterface;
+import srpmultiplier.util.SRPWorldDataInterface;
 
 @Mixin(EntityAIVenkrolSummon.class)
 public abstract class EntityAIVenkrolSummonMixin {
@@ -24,7 +24,8 @@ public abstract class EntityAIVenkrolSummonMixin {
             remap = false
     )
     private World mixin(EntityPStationaryArchitect instance){
-        this.blockPos = instance.getPosition();
+        if(!instance.world.isRemote)
+            this.blockPos = instance.getPosition();
         return instance.world;
     }
 

@@ -1,4 +1,4 @@
-package srpmultiplier.mixin;
+package srpmultiplier.mixin.simenderman;
 
 import com.dhanantry.scapeandrunparasites.entity.ai.misc.EntityPInfected;
 import com.dhanantry.scapeandrunparasites.entity.monster.infected.EntityInfEnderman;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
 
 @Mixin(ParasiteEventEntity.class)
-public abstract class ParasiteEventEntityMixin {
+public abstract class EndSimEndermanTweaks {
 
     @Redirect(
             method = "convertEntity",

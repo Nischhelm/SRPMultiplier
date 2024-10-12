@@ -61,10 +61,6 @@ public class SRPMultiplierConfigHandler {
 		@Config.Name("Bloodmoon Parasite Cap Multiplier")
 		public int bloodmoonInLCmobCapMultiplier = 4;
 
-		@Config.Comment("Multiply stats of parasites per evolution phase by this much, stats x (1 + phaseMultiplier x phase)")
-		@Config.Name("Stat Multiplier per Evolution Phase")
-		public double phaseMultiplier = 0.0;
-
 		@Config.Comment("Allow Assimilated Endermen to tp Primitive and Adapted mobs as well")
 		@Config.Name("Assimilated Endermen tp more Mobs")
 		public boolean simmermenTpMoreMobs = true;
@@ -135,7 +131,11 @@ public class SRPMultiplierConfigHandler {
 		@Config.Comment("Do Phase+Point functionalities per player, allowing better Multiplayer")
 		@Config.Name("Use Player Phases")
 		public boolean playerPhases = true;
-    }
+
+		@Config.Comment("Players can only get point penalty from adapted mobs despawning from this phase onwards")
+		@Config.Name("Adapted Despawn Penalty First Phase")
+		public int adaptedDespawnPenaltyPhase = 4;
+	}
 
 	/*public static class ClientConfig {
 

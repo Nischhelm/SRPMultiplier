@@ -1,4 +1,4 @@
-package srpmultiplier.handlers;
+package srpmultiplier.util;
 
 import com.dhanantry.scapeandrunparasites.world.SRPWorldData;
 import net.minecraft.util.math.BlockPos;
@@ -9,7 +9,6 @@ import java.util.UUID;
 public interface SRPWorldDataInterface {
 
     void setUUID(UUID uuid);
-    UUID getUUID();
 
     SRPWorldData getByPlayer(World world, UUID playerUUID);
 

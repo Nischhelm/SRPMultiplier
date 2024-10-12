@@ -15,9 +15,9 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import srpmultiplier.SRPMultiplier;
-import srpmultiplier.handlers.ParasiteEventEntityAddition;
+import srpmultiplier.handlers.PlayerPhases_AlertOnePlayer;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
-import srpmultiplier.handlers.SRPWorldDataInterface;
+import srpmultiplier.util.SRPWorldDataInterface;
 
 import java.util.Arrays;
 import java.util.UUID;
@@ -58,10 +58,6 @@ public abstract class SRPWorldDataMixin implements SRPWorldDataInterface {
     public void setUUID(UUID uuid){
         playerUUID = uuid;
     }
-    @Override
-    public UUID getUUID(){
-        return playerUUID;
-    }
 
     @Unique
     private static SRPWorldData createForPlayer(World world, UUID playerUUID, MapStorage storage) {
@@ -77,11 +73,11 @@ public abstract class SRPWorldDataMixin implements SRPWorldDataInterface {
         instance.setTotalKills(SRPConfigSystems.defaultEvoPoints, false, world, true);
 
         for(String line: SRPConfigSystems.evolutionDimStart) {
-            String[] here = line.split(";");
-            int dim = Integer.parseInt(here[0]);
+            String[] currLine = line.split(";");
+            int dim = Integer.parseInt(currLine[0]);
             if (currentDim == dim) {
-                int phase = Integer.parseInt(here[1]);
-                int points = Integer.parseInt(here[2]);
+                int phase = Integer.parseInt(currLine[1]);
+                int points = Integer.parseInt(currLine[2]);
                 instance.setEvolutionPhase((byte)phase, true, world, true);
                 if (phase == -1)
                     instance.setTotalKills(-points, false, world, true);
@@ -96,16 +92,12 @@ public abstract class SRPWorldDataMixin implements SRPWorldDataInterface {
             }
         }
 
-        boolean dimensionFound = Arrays.stream(SRPConfigSystems.evolutionDimGain).anyMatch(value -> value==currentDim);
-        if(!SRPConfigSystems.evolutionDimGainInverted && dimensionFound)
-            instance.setGaining(false);
-        if (SRPConfigSystems.evolutionDimGainInverted && !dimensionFound)
+        boolean dimensionFound = Arrays.stream(SRPConfigSystems.evolutionDimGain).anyMatch(v -> v==currentDim);
+        if(!SRPConfigSystems.evolutionDimGainInverted == dimensionFound)
             instance.setGaining(false);
 
-        dimensionFound = Arrays.stream(SRPConfigSystems.evolutionDimLoss).anyMatch(value -> value==currentDim);
-        if (!SRPConfigSystems.evolutionDimLossInverted && dimensionFound)
-            instance.setLoss(true);
-        if (SRPConfigSystems.evolutionDimLossInverted && !dimensionFound)
+        dimensionFound = Arrays.stream(SRPConfigSystems.evolutionDimLoss).anyMatch(v -> v==currentDim);
+        if (!SRPConfigSystems.evolutionDimLossInverted == dimensionFound)
             instance.setLoss(true);
 
         return instance;
@@ -183,7 +175,7 @@ public abstract class SRPWorldDataMixin implements SRPWorldDataInterface {
     )
     void sendWarningToOnePlayerMixin(World worldIn, String message, int warning){
         if(SRPMultiplierConfigHandler.server.playerPhases && this.playerUUID!=null)
-            ParasiteEventEntityAddition.alertOnePlayer(worldIn,this.playerUUID, message, warning);
+            PlayerPhases_AlertOnePlayer.alertOnePlayer(worldIn,this.playerUUID, message, warning);
         else
             ParasiteEventEntity.alertAllPlayerDim(worldIn, message, warning);
     }

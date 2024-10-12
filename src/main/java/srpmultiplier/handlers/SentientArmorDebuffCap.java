@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import rlmixins.handlers.ForgeConfigHandler;
 
-public class SRPPotionsLimitHandler {
+public class SentientArmorDebuffCap {
 
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onEntityHurt(LivingHurtEvent event) {

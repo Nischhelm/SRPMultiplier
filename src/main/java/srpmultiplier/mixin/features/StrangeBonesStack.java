@@ -1,4 +1,4 @@
-package srpmultiplier.mixin;
+package srpmultiplier.mixin.features;
 
 import com.dhanantry.scapeandrunparasites.init.SRPItems;
 import net.minecraft.item.Item;
@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
 
 @Mixin(SRPItems.class)
-public abstract class SRPItemsMixin {
+public abstract class StrangeBonesStack {
     @Shadow(remap = false)
     public static Item bone;
 

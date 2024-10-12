@@ -1,4 +1,4 @@
-package srpmultiplier.mixin;
+package srpmultiplier.mixin.LCTweaks;
 
 import com.dhanantry.scapeandrunparasites.world.SRPWorldData;
 import mcjty.lostcities.ForgeEventHandlers;
@@ -10,6 +10,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,9 +19,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
+import srpmultiplier.util.SRPWorldDataInterface;
 
 @Mixin(ForgeEventHandlers.class)
-public abstract class LostCitiesForgeEventHandlersMixin {
+public abstract class LCPortalPhaseLock {
 
     @Redirect(
             method = "onPlayerSleepInBedEvent",
@@ -30,7 +32,13 @@ public abstract class LostCitiesForgeEventHandlersMixin {
     void lockPortalBehindPhase(EntityPlayer player, int dimension, BlockPos pos){
         if(SRPMultiplierConfigHandler.server.portalLClockedPhase > -1) {
             if (dimension == LostCityConfiguration.DIMENSION_ID) {
-                byte evoPhase = SRPWorldData.get(player.getEntityWorld()).getEvolutionPhase();
+                byte evoPhase;
+                World world = player.getEntityWorld();
+                SRPWorldData data = SRPWorldData.get(world);
+                if (SRPMultiplierConfigHandler.server.playerPhases)
+                    evoPhase = ((SRPWorldDataInterface) data).getByPlayer(world, player.getUniqueID()).getEvolutionPhase();
+                else
+                    evoPhase = data.getEvolutionPhase();
 
                 if (evoPhase >= SRPMultiplierConfigHandler.server.portalLClockedPhase) {
                     CustomTeleporter.teleportToDimension(player, LostCityConfiguration.DIMENSION_ID, pos);

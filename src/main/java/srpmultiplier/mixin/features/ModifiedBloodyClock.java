@@ -1,4 +1,4 @@
-package srpmultiplier.mixin;
+package srpmultiplier.mixin.features;
 
 import com.dhanantry.scapeandrunparasites.item.ItemEPClock;
 import com.dhanantry.scapeandrunparasites.network.SRPCommandEvolution;
@@ -17,12 +17,12 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import net.minecraft.entity.player.EntityPlayer;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
-import srpmultiplier.handlers.SRPWorldDataInterface;
+import srpmultiplier.util.SRPWorldDataInterface;
 
 import static java.lang.Math.*;
 
 @Mixin(ItemEPClock.class)
-public abstract class SRPClockMixin {
+public abstract class ModifiedBloodyClock {
 
     @Unique
     private SRPWorldData worldData;

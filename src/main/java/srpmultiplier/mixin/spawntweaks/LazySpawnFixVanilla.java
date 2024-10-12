@@ -1,4 +1,4 @@
-package srpmultiplier.mixin;
+package srpmultiplier.mixin.spawntweaks;
 
 import com.google.common.collect.Sets;
 import net.minecraft.entity.EnumCreatureType;
@@ -20,7 +20,7 @@ import srpmultiplier.handlers.SRPMultiplierConfigHandler;
 import java.util.Set;
 
 @Mixin(WorldEntitySpawner.class)
-public abstract class WorldEntitySpawnerMixin {
+public abstract class LazySpawnFixVanilla {
 
     @Redirect(
             method = "findChunksForSpawning",

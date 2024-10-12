@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import srpmultiplier.handlers.SRPMultiplierConfigHandler;
-import srpmultiplier.handlers.SRPWorldDataInterface;
+import srpmultiplier.util.SRPWorldDataInterface;
 
 @Mixin(SRPEffectBase.class)
 public abstract class SRPEffectBaseMixin {
@@ -22,7 +22,7 @@ public abstract class SRPEffectBaseMixin {
 
     @Inject(
             method = "effectCOTH",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;get(Lnet/minecraft/world/World;)Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;"),
             remap = false
     )
     void saveBlockPosMixin(EntityLivingBase entity, int amplifier, CallbackInfo ci){
@@ -43,7 +43,7 @@ public abstract class SRPEffectBaseMixin {
 
     @Inject(
             method = "effectPrey",
-            at = @At("HEAD"),
+            at = @At(value = "INVOKE", target = "Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;get(Lnet/minecraft/world/World;)Lcom/dhanantry/scapeandrunparasites/world/SRPWorldData;"),
             remap = false
     )
     void saveBlockPosMixin2(EntityLivingBase entity, int amplifier, CallbackInfo ci){
