@@ -25,6 +25,8 @@ Changes:
 - Added phase limit from which on Adapted mobs despawning gives a penalty
 
 Idea is that LC is overrun by parasites via the End. Now they spill over to the other dimensions. If you try to enter LC, theres gonna be parasitic biomes almost immediately and you bring home even worse nightmares.
-	
+
+Suggested Config Files for running SRPMultiplier with RLCraft in RLCraft Parasited.zip
+
 Built upon FermiumTemplateMod by fonnymunkey, needs FermiumBooter
 https://github.com/fonnymunkey/FermiumTemplateMod/
