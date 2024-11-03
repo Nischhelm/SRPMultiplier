@@ -1,4 +1,4 @@
-package srpmultiplier.mixin.LCTweaks.bloodmoon;
+package srpmultiplier.mixin.lostcitytweaks.bloodmoon;
 
 import com.dhanantry.scapeandrunparasites.util.config.SRPConfigSystems;
 import com.dhanantry.scapeandrunparasites.world.SRPWorldEntitySpawner;

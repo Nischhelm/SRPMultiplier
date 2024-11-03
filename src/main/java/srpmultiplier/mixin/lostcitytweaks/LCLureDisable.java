@@ -1,4 +1,4 @@
-package srpmultiplier.mixin.LCTweaks;
+package srpmultiplier.mixin.lostcitytweaks;
 
 import com.dhanantry.scapeandrunparasites.block.BlockBase;
 import com.dhanantry.scapeandrunparasites.block.BlockEvolutionLure;

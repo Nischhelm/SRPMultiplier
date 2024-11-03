@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 import srpmultiplier.handlers.SentientArmorDebuffCap;
 import srpmultiplier.handlers.NexusSpawnSounds;
 
-@Mod(modid = SRPMultiplier.MODID, version = SRPMultiplier.VERSION, name = SRPMultiplier.NAME, dependencies = "required-after:fermiumbooter")
+@Mod(modid = SRPMultiplier.MODID, version = SRPMultiplier.VERSION, name = SRPMultiplier.NAME, dependencies = "required-after:fermiumbooter", acceptableRemoteVersions = "*")
 public class SRPMultiplier {
     public static final String MODID = "srpmultiplier";
     public static final String VERSION = "1.1.2";

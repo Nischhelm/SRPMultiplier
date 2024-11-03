@@ -34,7 +34,7 @@ public abstract class SRPWorldDataMixin implements SRPWorldDataInterface {
         return name+uuidtmp;
     }
 
-    @Inject(
+    /*@Inject(
             method = "create",
             at = @At(value = "HEAD"),
             remap = false
@@ -48,7 +48,7 @@ public abstract class SRPWorldDataMixin implements SRPWorldDataInterface {
                 e.printStackTrace(System.out);
             }
         }
-    }
+    }*/
 
     @Unique
     private static String uuidtmp = "";
@@ -61,7 +61,7 @@ public abstract class SRPWorldDataMixin implements SRPWorldDataInterface {
 
     @Unique
     private static SRPWorldData createForPlayer(World world, UUID playerUUID, MapStorage storage) {
-        SRPMultiplier.LOGGER.info("Creating new SRPWorldData for dim{} and player{}", world.provider.getDimension(),playerUUID.toString());
+        //SRPMultiplier.LOGGER.info("Creating new SRPWorldData for dim{} and player{}", world.provider.getDimension(),playerUUID.toString());
         uuidtmp = playerUUID.toString();
         SRPWorldData instance = new SRPWorldData();
         uuidtmp = "";
@@ -114,7 +114,7 @@ public abstract class SRPWorldDataMixin implements SRPWorldDataInterface {
             ((SRPWorldDataInterface) instancePlayer).setUUID(playerUUID);
             return instancePlayer;
         }
-        SRPMultiplier.LOGGER.info("Nischi says: getbyplayer didnt find player");
+        //SRPMultiplier.LOGGER.info("Nischi says: getbyplayer didnt find player");
         return SRPWorldData.get(world);
     }
 
@@ -128,15 +128,14 @@ public abstract class SRPWorldDataMixin implements SRPWorldDataInterface {
 
             if (player != null)
                 return getByPlayer(world, player.getUniqueID());
-            else
-                SRPMultiplier.LOGGER.info("Nischi says: getbyblock didnt find player {}", blockPos);
-        } else
+            //else SRPMultiplier.LOGGER.info("Nischi says: getbyblock didnt find player {}", blockPos);
+        } /*else
             SRPMultiplier.LOGGER.info("Nischi says: getbyblock didnt find blockpos");
         try {
             throw (new Exception("Nischi says even more"));
         } catch(Exception e){
             e.printStackTrace(System.out);
-        }
+        }*/
         return SRPWorldData.get(world);
     }
 
