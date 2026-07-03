@@ -33,7 +33,8 @@ public abstract class WeaponAtkSpeed {
     @ModifyVariable(
             method = "<init>",
             at = @At(value = "FIELD", target = "Lcom/dhanantry/scapeandrunparasites/item/tool/WeaponToolMeleeBase;attackSpeed:D", opcode = Opcodes.PUTFIELD),
-            name = "attackspeed"
+            name = "attackspeed",
+            remap = false
     )
     private static double srpmixins_modifyAtkSpeed(double origAttackSpeed, @Local(argsOnly = true) byte id) {
         String weaponName = SRPMIXINS$WEAPONNAMES.get(id-1);
