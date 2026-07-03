@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "srpmixins.mixin.weaponfixes",
+  "refmap": "mixins.srpmixins.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "client": [
+    "SentientMaulLangKeyFix"
+  ],
+  "injectors": {
+    "maxShiftBy": 10
+  }
+}

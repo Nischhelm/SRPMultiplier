@@ -15,4 +15,16 @@ enchantment.parasite_slicer=Parasite Slicer
 enchantment.srpmixins.parasite_slicer.desc=Increases Damage against Parasites.
 
 death.attack.srpmixins_coth=%1$s was assimilated
-death.attack.cactus.player=%1$s was assimilated after getting attacked by %2$s
+death.attack.srpmixins_coth.player=%1$s was assimilated after getting attacked by %2$s
+
+
+tootip.srparasites.weaponm.69=§fThe ulterior Evolution of the Living Maul. It has gained a §bMind§f.
+tootip.srparasites.weaponm.11=§fResult of various Parasites body parts reshaped to form a Weapon. The flame of life shines inside it.
+tootip.srparasites.weaponm.12=§fThe ulterior Evolution of the Living Lance. It has gained a §bMind§f.
+tootip.srparasites.weaponm.169=§cKill one§f kill many.
+tootip.srparasites.weaponm.110=Stick them with the §cpointy§f end.
+tootip.srparasites.weaponm.120=Stick them with the §cpointy§f end.
+tootip.srparasites.weaponm.900=You can't hide anymore...
+tootip.srparasites.weaponm.1000=You can't hide anymore...
+tootip.srparasites.weaponm.1100=You can't hide anymore...
+tootip.srparasites.weaponm.1200=You can't hide anymore...

@@ -4,6 +4,9 @@ import fermiumbooter.annotations.MixinConfig;
 import net.minecraftforge.common.config.Config;
 import srpmixins.SRPMixins;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @MixinConfig(name = SRPMixins.MODID)
 public class WeaponConfig {
     @Config.Comment("Fully disable the sentient evolution mechanic where living weapons/armor/bow evolve to sentient after x kills")
@@ -57,6 +60,7 @@ public class WeaponConfig {
             "TAKE_DAMAGE: gets points when players take damage.")
     @Config.Name("Armor Evolution System")
     public EnumArmorEvolution armorEvoType = EnumArmorEvolution.DEAL_DAMAGE;
+    public enum EnumArmorEvolution{DEAL_DAMAGE, TAKE_DAMAGE}
 
     @Config.Comment("If enabled, living gear will only get points when interacting (killing/taking dmg from) parasites, not just any mob.")
     @Config.Name("Evolution Only From Parasites")
@@ -64,5 +68,30 @@ public class WeaponConfig {
     @MixinConfig.MixinToggle(lateMixin = "mixins.srpmixins.srp.weaponevoonlyonparas.json", defaultValue = false)
     public boolean onlyParasites = false;
 
-    public enum EnumArmorEvolution{DEAL_DAMAGE, TAKE_DAMAGE}
+    @Config.Comment({
+            "Sentient Maul uses as its first lore line the second lore line of the living scythe because of an id overlap.",
+            "This makes Sentient Maul use a different lang key (ending in 69 instead of 10) for its first line to fix it."
+    })
+    @Config.Name("Fix Sentient Maul Lang Key")
+    @Config.RequiresMcRestart
+    @MixinConfig.MixinToggle(lateMixin = "mixins.srpmixins.srp.sentientmaullangkeyfix.json", defaultValue = true)
+    public boolean fixSentMaulLangKey = true;
+
+    @Config.Comment("You can modify the default attack speed of all living+sentient weapons here. This mixin is always active, as i didnt find a good way to disable it.")
+    @Config.Name("Weapon Attack Speeds")
+    @Config.RequiresMcRestart
+    public HashMap<String,Double> attackSpeeds = new HashMap<String, Double>() {{
+        put("Living Scythe", 0.9);
+        put("Living Axe", 0.9);
+        put("Living Sword", 0.9);
+        put("Living Cleaver", 0.9);
+        put("Living Maul", 0.9);
+        put("Living Lance", 0.9);
+        put("Sentient Scythe", 0.7);
+        put("Sentient Axe", 0.7);
+        put("Sentient Sword", 0.7);
+        put("Sentient Cleaver", 0.7);
+        put("Sentient Maul", 0.7);
+        put("Sentient Lance", 0.7);
+    }};
 }
