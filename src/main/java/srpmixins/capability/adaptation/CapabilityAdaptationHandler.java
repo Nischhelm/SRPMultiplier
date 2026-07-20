@@ -99,10 +99,17 @@ public class CapabilityAdaptationHandler {
             DamageSource source = event.getSource();
             Entity immediateSource = source.getImmediateSource();
 
-            if (SRPMixinsConfigProvider.fireMultiDmgTypes.contains(source.damageType) ||
-                    SRPMixinsConfigProvider.fireMultiDmgTypes.contains("isBurning") && player.isBurning()) {
-                event.setAmount(amount * SRPConfig.firemultyplier);
-                return; //no adaptation in this case
+            boolean isFireDamage = SRPMixinsConfigProvider.fireMultiDmgTypes.contains(source.damageType) ||
+                    SRPMixinsConfigProvider.fireMultiDmgTypes.contains("isBurning") && player.isBurning();
+
+            if (isFireDamage) {
+                amount *= (float) SRPMixinsConfigHandler.adaptation.fireDamageMultiplier;
+
+                // default SRP behavior
+                if (SRPMixinsConfigHandler.adaptation.burningAdaptationEffectiveness <= 0.0) {
+                    event.setAmount(amount);
+                    return;
+                }
             }
 
             float reductionAmount = 0.0F;
@@ -130,16 +137,25 @@ public class CapabilityAdaptationHandler {
                 if (adaCap == null) continue;
 
                 boolean hasAdaptation = adaCap.hasAdaptation(damageTypeName);
-                //Try to add it if it doesn't exist yet
-                if (!hasAdaptation) hasAdaptation = adaCap.tryAddAdaptation(damageTypeName, player.getRNG(), blackListType);
 
-                if (hasAdaptation) {
-                    //Try to increase the adaptation
-                    adaCap.tryIncreaseAdaptation(damageTypeName, player.getRNG());
-                    //Get the reduction
-                    reductionAmount += adaCap.getReduction(damageTypeName);
+                if (!isFireDamage) {
+                    //Try to add it if it doesn't exist yet
+                    if (!hasAdaptation) hasAdaptation = adaCap.tryAddAdaptation(damageTypeName, player.getRNG(), blackListType);
+
+                    if (hasAdaptation) {
+                        //Try to increase the adaptation
+                        adaCap.tryIncreaseAdaptation(damageTypeName, player.getRNG());
+                    }
                 }
+
+                // Use existing adaptations (possibly with reduced effectiveness when burning)
+                if (hasAdaptation)
+                    reductionAmount += adaCap.getReduction(damageTypeName);
             }
+
+            // Apply reduction effectiveness multiplier when burning
+            if (isFireDamage && SRPMixinsConfigHandler.adaptation.burningAdaptationEffectiveness < 1.0)
+                reductionAmount *= (float) SRPMixinsConfigHandler.adaptation.burningAdaptationEffectiveness;
 
             event.setAmount(Math.max(amount * (1 - reductionAmount), 0.0F));
 
