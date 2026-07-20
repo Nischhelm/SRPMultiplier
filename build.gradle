@@ -62,7 +62,7 @@ dependencies {
     compileOnly "io.github.llamalad7:mixinextras-common:${mixin_extras_version}"
     annotationProcessor "io.github.llamalad7:mixinextras-common:${mixin_extras_version}"
 
-    compileOnly fg.deobf("libs:SRParasites:${srparasites_version}") // Third party distro disabled
+    implementation fg.deobf("curse.maven:scape-and-run-parasites-348025:5370258")
     implementation fg.deobf("libs:FermiumBooter:1.5.0-indev")
     //implementation fg.deobf("curse.maven:fermiumbooter-${fermiumbooter_version}")
 
