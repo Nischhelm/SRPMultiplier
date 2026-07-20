@@ -4,6 +4,7 @@ plugins {
     id 'net.minecraftforge.gradle' version "${forge_gradle_version}"
     id 'org.spongepowered.mixin' version "${mixin_gradle_version}"
     id 'wtf.gofancy.fancygradle' version "${fancy_gradle_version}"
+    id 'me.modmuss50.mod-publish-plugin' version "${mod_publish_gradle_version}"
 }
 
 version = mod_version
@@ -148,3 +149,75 @@ jar {
 }
 
 jar.finalizedBy('reobfJar')
+
+publishMods {
+    file = jar.archiveFile
+    changelog = providers.environmentVariable("CHANGELOG").orElse("See GitHub releases for changelog")
+    version = mod_version
+    type = STABLE
+    modLoaders.add("forge")
+
+    if (project.findProperty("publish_to_github") == "true") {
+        github {
+            accessToken = providers.environmentVariable("GITHUB_TOKEN")
+            repository = providers.environmentVariable("GITHUB_REPOSITORY").orElse("owner/repo")
+            commitish = "main"
+        }
+    }
+
+    if (project.findProperty("curseforge_project_id")) {
+        curseforge {
+            accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
+            projectId = project.findProperty("curseforge_project_id")
+            minecraftVersions.add(minecraft_version)
+            modLoaders.add("forge")
+
+            client = true
+            server = true
+
+            requires("fermiumbooter")
+            requires("scape-and-run-parasites")
+            optional("the-lost-cities")
+            optional("blood-moon")
+            optional("lycanites-mobs")
+            optional("in-control")
+            optional("crafttweaker")
+            optional("scape-and-run-parasites-deep-sea-danger")
+            optional("scape-and-run-parasites-extra")
+            optional("srp-addon-cotesia-glomerata")
+            optional("scape-and-run-parasites-mutant-beasts")
+            optional("scape-and-run-parasites-quark")
+            optional("scape-and-spartan-parasites")
+            optional("parasites-addon-overlast")
+            optional("antique-atlas")
+            optional("simple-voice-chat")
+        }
+    }
+
+    if (project.findProperty("modrinth_project_id")) {
+        modrinth {
+            accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+            projectId = project.findProperty("modrinth_project_id")
+            minecraftVersions.add(minecraft_version)
+            modLoaders.add("forge")
+
+            requires("fermiumbooter")
+            requires("scapeandrunparasites")
+            optional("the-lost-cities")
+            optional("blood-moon")
+            optional("lycanites-mobs")
+            optional("in-control")
+            optional("crafttweaker")
+            optional("scape-and-run-parasites-deep-sea-danger")
+            optional("scape-and-run-parasites-extra")
+            optional("srp-addon-cotesia-glomerata")
+            optional("scape-and-run-parasites-quark")
+            optional("antique-atlas")
+            optional("simple-voice-chat")
+            // not available on modrinth:
+//            optional("scape-and-run-parasites-mutant-beasts")
+//            optional("scape-and-spartan-parasites")
+//            optional("parasites-addon-overlast")
+        }
+    }
+}
