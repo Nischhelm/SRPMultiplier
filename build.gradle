@@ -178,7 +178,7 @@ publishMods {
             requires("fermiumbooter")
             requires("scape-and-run-parasites")
             optional("the-lost-cities")
-            optional("blood-moon")
+            optional("bloodmoon")
             optional("lycanites-mobs")
             optional("in-control")
             optional("crafttweaker")

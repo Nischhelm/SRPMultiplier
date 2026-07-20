@@ -15,17 +15,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Read Java version from build.gradle
-        id: java_version
-        run: |
-          JAVA_VERSION=$(grep -oP '(?<=JavaLanguageVersion\.of\()\d+' build.gradle)
-          echo "java_version=$JAVA_VERSION" >> $GITHUB_OUTPUT
-          echo "Using Java $JAVA_VERSION"
-
       - name: Set up JDK
         uses: actions/setup-java@v5
         with:
-          java-version: ${{ steps.java_version.outputs.java_version }}
+          java-version: 21
           distribution: 'temurin'
 
       - name: Setup Gradle
