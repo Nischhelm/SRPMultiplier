@@ -32,7 +32,7 @@ public abstract class WeaponAtkSpeed {
     
     @ModifyVariable(
             method = "<init>",
-            at = @At(value = "FIELD", target = "Lcom/dhanantry/scapeandrunparasites/item/tool/WeaponToolMeleeBase;attackSpeed:D", opcode = Opcodes.PUTFIELD),
+            at = @At(value = "LOAD"),
             name = "attackspeed",
             remap = false
     )

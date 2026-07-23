@@ -17,10 +17,9 @@ public abstract class SentientMaulLangKeyFix extends WeaponToolMeleeBase {
             method = "addInformation",
             at = @At(value = "INVOKE", target = "Ljava/lang/StringBuilder;append(I)Ljava/lang/StringBuilder;")
     )
-    private int srpmixins_modifyAtkSpeed(int i) {
+    private int srpmixins_modifyLangkeys(int i) {
         if(i == 10) return 69;
         if(i == 100) return 169;
-        if(i == 1000) return 1069;
         return i;
     }
 }

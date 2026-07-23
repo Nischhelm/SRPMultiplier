@@ -48,7 +48,7 @@ import srpmixins.world.SRPWorldProvider;
 )
 public class SRPMixins {
     public static final String MODID = "srpmixins";
-    public static final String VERSION = "2.9.6.2";
+    public static final String VERSION = "2.9.6.3";
     public static final String NAME = "SRPMixins";
     public static final Logger LOGGER = LogManager.getLogger();
     public static Configuration CONFIG;
