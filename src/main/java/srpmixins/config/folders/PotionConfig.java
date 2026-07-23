@@ -43,4 +43,13 @@ public class PotionConfig {
     @Config.RequiresMcRestart
     @Config.RangeDouble(min = -0.01, max = 1)
     public float fosterChance = 0.02F;
+
+    @Config.Comment({
+            "Base SRP Fear has a modifiable damage multiplier for entities in the air (!onGround) or flying (capabilities.isFlying).",
+            "Enable this toggle to make the damage multiplier only apply when actually flying, not when just jumping or falling."
+    })
+    @Config.Name("Fear Damage Only When Flying")
+    @Config.RequiresMcRestart
+    @MixinConfig.MixinToggle(lateMixin = "mixins.srpmixins.srp.feardmgcondition.json", defaultValue = false)
+    public boolean fearDmgOnlyWhenFlying = false;
 }

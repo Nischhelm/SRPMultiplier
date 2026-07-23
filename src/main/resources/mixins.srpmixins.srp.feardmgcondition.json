@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "srpmixins.mixin.potions",
+  "refmap": "mixins.srpmixins.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8",
+  "mixins": [
+    "FearDmgCondition"
+  ],
+  "injectors": {
+    "maxShiftBy": 10
+  }
+}
