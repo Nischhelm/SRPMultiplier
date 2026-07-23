@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import srpmixins.config.SRPConfigProvider;
+import srpmixins.config.SRPMixinsConfigHandler;
 import srpmixins.util.IIsTicking;
 
 import java.util.HashMap;
@@ -59,6 +60,7 @@ public abstract class SRPSaveDataMixin_TickData implements IIsTicking {
 
     @Inject(method = "getCooldown", at = @At("HEAD"), remap = false, cancellable = true)
     private void srpmixins_getCooldownTick(World worldIn, int dim, CallbackInfoReturnable<Integer> cir){
+        if(!SRPMixinsConfigHandler.playerphases.enabled) return;
         cir.setReturnValue(srpmixins$cooldowns.getOrDefault(dim, 0) / 20);
     }
 
