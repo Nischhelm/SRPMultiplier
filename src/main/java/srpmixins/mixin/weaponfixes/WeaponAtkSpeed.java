@@ -36,7 +36,7 @@ public abstract class WeaponAtkSpeed {
             name = "attackspeed",
             remap = false
     )
-    private static double srpmixins_modifyAtkSpeed(double origAttackSpeed, @Local(argsOnly = true) byte id) {
+    private double srpmixins_modifyAtkSpeed(double origAttackSpeed, @Local(argsOnly = true) byte id) {
         String weaponName = SRPMIXINS$WEAPONNAMES.get(id-1);
         if(!SRPMixinsConfigHandler.weapons.attackSpeeds.containsKey(weaponName))
             return origAttackSpeed;
