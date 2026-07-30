@@ -19,6 +19,7 @@ gradle-app.setting
 
 .idea
 **/run/
+**/runServer/
 **/external/
 !src/**/run/
 **/libs/
