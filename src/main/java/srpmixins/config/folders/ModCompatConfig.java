@@ -63,6 +63,18 @@ public class ModCompatConfig {
     @Config.RequiresMcRestart
     public boolean overlastHUDnoPoints = false;
 
+    @Config.Comment("Fixes the OpenGL State before rendering the OverLast evolution bar so it doesn't take on the color of the gui that was rendered before it.")
+    @Config.Name("OverLast HUD GL State Fix")
+    @MixinConfig.MixinToggle(lateMixin = "mixins.srpmixins.overlast.glstatefix.json", defaultValue = false)
+    @MixinConfig.CompatHandling(
+            modid = "overlast",
+            desired = true,
+            reason = "Mod Compat for OverLast, requires OverLast",
+            warnIngame = false
+    )
+    @Config.RequiresMcRestart
+    public boolean overlastGLFix = true;
+
     @Config.Comment("Set to true to make \"Scape and Spartan: Parasites\" weapons with the Uncapped property ignore parasite damage caps.\n" +
             "NOTE: This property works without SRPMixins as well, this just streamlines the handling a bit. \n" +
             "I kinda thought it didn't work - without actually testing it...")
