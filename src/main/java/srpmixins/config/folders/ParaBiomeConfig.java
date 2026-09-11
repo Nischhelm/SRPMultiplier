@@ -28,6 +28,12 @@ public class ParaBiomeConfig {
     @MixinConfig.MixinToggle(lateMixin = "mixins.srpmixins.srp.fogmultiplayerfix.json", defaultValue = true)
     public boolean fixBiomeFog = true;
 
+    @Config.Comment("Smooths client fog color and density updates and prevents unrelated world loads from clearing rendered fog. Uses a linear fog range instead of SRP's exponential curve. Disable and restart to restore original client fog rendering; the multiplayer fog fix is independent.")
+    @Config.Name("Smooth Parasitic Biome Fog")
+    @Config.RequiresMcRestart
+    @MixinConfig.MixinToggle(lateMixin = "mixins.srpmixins.srp.smoothfog.json", defaultValue = true)
+    public boolean smoothBiomeFog = true;
+
     @Config.Comment("Parasite Bush and Vines will force load chunks when a parasite biome is growing. This stops the force loading. Moved from RLMixins (thanks fonny!)")
     @Config.Name("Fix Parasite Bush Generation Lag")
     @Config.RequiresMcRestart
