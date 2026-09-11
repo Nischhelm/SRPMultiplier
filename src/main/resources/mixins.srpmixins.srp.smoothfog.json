@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "srpmixins.mixin.parabiome",
+  "refmap": "mixins.srpmixins.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "target": "@env(CLIENT)",
+  "minVersion": "0.8",
+  "client": [
+    "SRPFogMixin",
+    "SRPFogPacketMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
